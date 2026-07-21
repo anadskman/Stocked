@@ -1,5 +1,6 @@
 const recipeList = document.getElementById("recipe-list");
 
+
 loadRecipes();
 
 
@@ -14,13 +15,19 @@ async function loadRecipes(){
     recipeList.innerHTML = "";
 
 
+    const householdId = await getHouseholdId();
+
+
+    if(!householdId){
+        console.error("No household found");
+        return;
+    }
+
+
     const {data,error} = await supabaseClient
-
         .from("recipes")
-
         .select("*")
         .eq("household_id", householdId)
-
         .order("created_at", {
             ascending:false
         });
@@ -29,7 +36,6 @@ async function loadRecipes(){
     if(error){
 
         console.error(error);
-
         return;
 
     }
@@ -49,33 +55,19 @@ async function loadRecipes(){
     }
 
 
-    data.forEach(recipe=>{
+    data.forEach(recipe => {
 
-
-        recipeList.innerHTML += `
-
-        <div class="recipe-card">
-
-            <h3>
-                ${recipe.name}
-            </h3>
-
-            <p>
-                ${recipe.description ?? ""}
-            </p>
-
-        </div>
-
-        `;
-
+        createRecipeCard(recipe);
 
     });
 
 }
 
-async function createRecipeCard(recipe) {
 
-    const { data: ingredients } = await supabaseClient
+
+async function createRecipeCard(recipe){
+
+    const {data: ingredients,error} = await supabaseClient
         .from("recipe_items")
         .select(`
             quantity,
@@ -87,43 +79,68 @@ async function createRecipeCard(recipe) {
         `)
         .eq("recipe_id", recipe.id);
 
+
+    if(error){
+        console.error(error);
+        return;
+    }
+
+
     let missing = 0;
 
-    ingredients.forEach(item => {
 
-        if (!item.items)
+    ingredients.forEach(item=>{
+
+        if(!item.items)
             return;
 
-        if (item.items.quantity < item.quantity)
+
+        if(item.items.quantity < item.quantity){
+
             missing++;
 
+        }
+
     });
+
+
 
     let status = "Can Make";
     let statusClass = "status-green";
 
-    if (missing > 0 && missing <= 2) {
+
+    if(missing > 0 && missing <= 2){
 
         status = `Missing ${missing}`;
         statusClass = "status-orange";
 
     }
 
-    if (missing > 2) {
+
+    if(missing > 2){
 
         status = `Missing ${missing}`;
         statusClass = "status-red";
 
     }
 
+
+
     recipeList.innerHTML += `
 
         <div class="recipe-card"
-            onclick="location.href='recipe.html?id=${recipe.id}'">
+        onclick="location.href='recipe.html?id=${recipe.id}'">
 
-            <h3>${recipe.name}</h3>
 
-            <p>${recipe.description ?? ""}</p>
+            <h3>
+                ${recipe.name}
+            </h3>
+
+
+            <p>
+                ${recipe.description ?? ""}
+            </p>
+
 
             <div class="recipe-footer">
 
@@ -131,9 +148,11 @@ async function createRecipeCard(recipe) {
                     ${status}
                 </span>
 
+
                 <i class="fa-solid fa-chevron-right"></i>
 
             </div>
+
 
         </div>
 
