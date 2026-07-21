@@ -1,7 +1,8 @@
 const recipeList = document.getElementById("recipe-list");
 
-
-loadRecipes();
+if(recipeList){
+    loadRecipes();
+}
 
 
 async function loadRecipes(){
