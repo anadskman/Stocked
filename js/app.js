@@ -53,3 +53,11 @@ async function checkAuth() {
 }
 
 checkAuth();
+
+if(localStorage.getItem("mode") === "demo"){
+
+    document
+    .getElementById("demo-banner")
+    ?.classList.add("show");
+
+}
