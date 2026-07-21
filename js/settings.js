@@ -65,3 +65,15 @@ document.getElementById("leave-household").onclick = async () => {
 
   window.location.href = "setup.html";
 };
+
+document
+.getElementById("logout-button")
+.addEventListener("click", async()=>{
+
+    localStorage.removeItem("mode");
+
+    await supabaseClient.auth.signOut();
+
+    window.location.href="index.html";
+
+});
