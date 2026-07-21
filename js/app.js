@@ -27,6 +27,12 @@ if (overlay) {
 }
 
 async function checkAuth() {
+  const page = window.location.pathname.split("/").pop();
+
+  if (page === "index.html" || page === "" || page === "setup.html") {
+    return;
+  }
+
   if (localStorage.getItem("mode") === "demo") {
     return;
   }

@@ -67,21 +67,38 @@ if (signupButton) {
 }
 
 async function checkSetup() {
-  const user = await getCurrentUser();
 
-  const { data } = await supabaseClient
+    const user = await getCurrentUser();
 
-    .from("profiles")
+    if(!user){
+        window.location.href = "index.html";
+        return;
+    }
 
-    .select("household_id")
 
-    .eq("id", user.id)
+    const { data, error } = await supabaseClient
+        .from("profiles")
+        .select("household_id")
+        .eq("id", user.id)
+        .single();
 
-    .single();
 
-  if (data.household_id) {
-    window.location.href = "dashboard.html";
-  } else {
-    window.location.href = "setup.html";
-  }
+    if(error){
+
+        console.error(error);
+        return;
+
+    }
+
+
+    if(data?.household_id){
+
+        window.location.href = "dashboard.html";
+
+    } else {
+
+        window.location.href = "setup.html";
+
+    }
+
 }

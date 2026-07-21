@@ -5,7 +5,7 @@ async function loadDashboard() {
   loadLowStock();
   loadExpiringSoon();
   loadShoppingCount();
-  LoadActivity();
+  loadActivity();
   loadRecipeSuggestions();
 }
 
@@ -145,10 +145,13 @@ async function loadRecipeSuggestions() {
 
   container.innerHTML = "";
 
+  const householdId = await getHouseholdId();
+  
   const { data: recipes } = await supabaseClient
-    .from("recipes")
-    .select("*")
-    .limit(5);
+      .from("recipes")
+      .select("*")
+      .eq("household_id", householdId)
+      .limit(5);
 
   if (!recipes.length) {
     container.innerHTML = `
