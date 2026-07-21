@@ -2,23 +2,73 @@ const recipeList = document.getElementById("recipe-list");
 
 loadRecipes();
 
-async function loadRecipes() {
 
-    recipeList.innerHTML = "";
+async function loadRecipes(){
 
-    const { data: recipes, error } = await supabaseClient
-        .from("recipes")
-        .select("*")
-        .order("name");
-
-    if (error) {
-        console.error(error);
+    if(!recipeList){
+        console.error("Recipe list container missing");
         return;
     }
 
-    for (const recipe of recipes) {
-        await createRecipeCard(recipe);
+
+    recipeList.innerHTML = "";
+
+
+    const {data,error} = await supabaseClient
+
+        .from("recipes")
+
+        .select("*")
+
+        .order("created_at", {
+            ascending:false
+        });
+
+
+    if(error){
+
+        console.error(error);
+
+        return;
+
     }
+
+
+    console.log("Recipes:", data);
+
+
+    if(data.length === 0){
+
+        recipeList.innerHTML = `
+            <p>No recipes found</p>
+        `;
+
+        return;
+
+    }
+
+
+    data.forEach(recipe=>{
+
+
+        recipeList.innerHTML += `
+
+        <div class="recipe-card">
+
+            <h3>
+                ${recipe.name}
+            </h3>
+
+            <p>
+                ${recipe.description ?? ""}
+            </p>
+
+        </div>
+
+        `;
+
+
+    });
 
 }
 
