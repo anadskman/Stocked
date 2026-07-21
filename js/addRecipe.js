@@ -7,7 +7,18 @@ document
   .addEventListener("click", addIngredientRow);
 
 async function addIngredientRow() {
-  const { data } = await supabaseClient.from("items").select("*").order("name");
+  const { data, error } = await supabaseClient
+    .from("items")
+    .select("*")
+    .order("name");
+
+
+if(error){
+
+    console.error(error);
+    return;
+
+}
 
   const row = document.createElement("div");
   row.className = "ingredient-row";
@@ -66,17 +77,49 @@ document.getElementById("recipe-form").addEventListener("submit", async (e) => {
     return;
   }
 
-  document.querySelectorAll(".ingredient-row").forEach(async (row) => {
-    await supabaseClient.from("recipe_items").insert({
-      recipe_id: recipe.id,
+  const ingredientRows = document.querySelectorAll(".ingredient-row");
 
-      item_id: row.querySelector(".ingredient-item").value,
 
-      quantity: Number(row.querySelector(".ingredient-quantity").value),
+const inserts = Array.from(ingredientRows).map(row => {
 
-      unit: "",
-    });
-  });
+    return supabaseClient
+        .from("recipe_items")
+        .insert({
 
-  window.location.href = "recipes.html";
+            recipe_id: recipe.id,
+
+            item_id:
+            row.querySelector(".ingredient-item").value,
+
+            quantity:
+            Number(
+                row.querySelector(".ingredient-quantity").value
+            ),
+
+            unit: ""
+
+        });
+
+});
+
+
+const results = await Promise.all(inserts);
+
+
+const failed = results.find(result => result.error);
+
+
+if(failed){
+
+    console.error(
+        "Ingredient insert failed:",
+        failed.error
+    );
+
+    return;
+
+}
+
+
+window.location.href = "recipes.html";
 });
