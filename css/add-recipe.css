@@ -1,0 +1,43 @@
+.add-page{
+    padding:20px;
+}
+
+.add-page h1{
+    margin-bottom:20px;
+}
+
+#recipe-form{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+textarea{
+    resize:vertical;
+    min-height:120px;
+}
+
+#ingredients{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.ingredient-row{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:10px;
+}
+
+#add-ingredient{
+    padding:14px;
+    border-radius:var(--radius);
+    border:2px dashed var(--accent);
+    color:var(--accent);
+    background:white;
+    font-weight:600;
+}
+
+.primary-button{
+    margin-top:10px;
+}

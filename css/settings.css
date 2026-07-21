@@ -1,0 +1,89 @@
+.settings-page {
+
+    padding: 20px;
+
+}
+
+
+
+.settings-card {
+
+    background: var(--cards-bg);
+
+    padding: 20px;
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.settings-card h2 {
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.setting-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+
+.label {
+
+    color: var(--text-secondary);
+
+    font-size: 14px;
+
+}
+
+
+
+#copy-code {
+
+    padding: 10px 15px;
+
+    background: var(--accent);
+
+    color: white;
+
+    border-radius: 10px;
+
+}
+
+
+
+.danger-button {
+
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 15px;
+
+    border-radius: var(--radius);
+
+    background: var(--danger);
+
+    color: white;
+
+    font-weight: 600;
+
+}

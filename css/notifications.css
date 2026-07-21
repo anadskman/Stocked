@@ -1,0 +1,39 @@
+.notification-panel {
+    position: fixed;
+    top: 70px;
+    right: -350px;
+    width: 320px;
+    max-height: 70vh;
+    overflow-y: auto;
+    background: var(--cards-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-hover);
+    z-index: 500;
+    transition: .3s ease;
+}
+
+.notification-panel.open {
+    right: 20px;
+}
+
+.notification-header {
+    padding: 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.notification-item {
+    padding: 15px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 12px;
+}
+
+.notification-item i {
+    color: var(--warning);
+}
+
+.empty-notification {
+    padding: 25px;
+    text-align: center;
+    color: var(--text-secondary);
+}

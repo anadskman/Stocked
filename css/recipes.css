@@ -1,0 +1,149 @@
+.recipes-page{
+    padding:20px;
+}
+
+.page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.page-header h1{
+    font-size:30px;
+}
+
+.recipe-list{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.recipe-card{
+    background:var(--cards-bg);
+    border-radius:var(--radius);
+    padding:20px;
+    box-shadow:var(--shadow);
+    cursor:pointer;
+    transition:.2s;
+}
+
+.recipe-card:hover{
+    transform:translateY(-2px);
+    box-shadow:var(--shadow-hover);
+}
+
+.recipe-card h3{
+    margin-bottom:8px;
+    font-size:20px;
+}
+
+.recipe-card p{
+    color:var(--text-secondary);
+    margin-bottom:15px;
+}
+
+.recipe-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.recipe-status{
+    padding:6px 12px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.status-green{
+    background:#dff6e8;
+    color:#16803d;
+}
+
+.status-orange{
+    background:#fff2dc;
+    color:#d48806;
+}
+
+.status-red{
+    background:#fde4e4;
+    color:#c0392b;
+}
+
+.primary-button {
+    width: auto;
+}
+
+.recipe-page{
+    padding:20px;
+}
+
+.recipe-header{
+    margin-bottom:25px;
+}
+
+.recipe-header h1{
+    margin-bottom:10px;
+}
+
+.recipe-header p{
+    color:var(--text-secondary);
+}
+
+.ingredient-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:white;
+    padding:15px;
+    margin-bottom:12px;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+}
+
+.have{
+    color:var(--accent);
+    font-weight:700;
+}
+
+.need{
+    color:var(--danger);
+    font-weight:700;
+}
+
+#recipe-summary{
+
+    margin:25px 0;
+
+}
+
+#recipe-summary .recipe-card{
+
+    cursor:default;
+
+}
+
+.ingredient-row{
+
+    display:grid;
+
+    grid-template-columns:2fr 90px;
+
+    gap:12px;
+
+    margin-bottom:12px;
+
+}
+
+.ingredient-row select{
+
+    width:100%;
+
+}
+
+.ingredient-row input{
+
+    text-align:center;
+
+}

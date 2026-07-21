@@ -1,0 +1,70 @@
+.analytics-page {
+
+    padding: 20px;
+
+}
+
+
+.analytics-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+
+    margin: 20px 0;
+
+}
+
+
+.analytics-card {
+
+    background: var(--cards-bg);
+
+    padding: 20px;
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    margin-bottom: 20px;
+
+}
+
+
+.analytics-card h2 {
+
+    color: var(--accent);
+
+    font-size: 32px;
+
+}
+
+
+.analytics-card p {
+
+    color: var(--text-secondary);
+
+}
+
+
+
+.usage-item {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.usage-item:last-child {
+
+    border: none;
+
+}

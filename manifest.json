@@ -1,0 +1,23 @@
+{
+    "name": "Stocked",
+    "short_name": "Stocked",
+    "description": "Smart household inventory management",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#f8f9fb",
+    "theme_color": "#3cb371",
+    "orientation": "portrait",
+
+    "icons": [
+        {
+            "src": "icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "assets/image/png"
+        },
+        {
+            "src": "icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "assets/image/png"
+        }
+    ]
+}

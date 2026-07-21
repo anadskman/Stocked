@@ -1,0 +1,67 @@
+.shopping-page {
+    padding: 20px;
+}
+
+.shopping-header {
+    margin-bottom: 25px;
+}
+
+.shopping-header h1 {
+    font-size: 24px;
+}
+
+.shopping-header p {
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+.shopping-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.shopping-card {
+    background: var(--cards-bg);
+    padding: 18px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.shopping-info h3 {
+    font-size: 18px;
+}
+
+.shopping-info p {
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+.shopping-check {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: transparent;
+}
+
+.shopping-card.completed {
+    opacity: .55;
+}
+
+.shopping-card.completed .shopping-check {
+    background: var(--accent);
+    color: white;
+}
+
+.empty-shopping {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+}

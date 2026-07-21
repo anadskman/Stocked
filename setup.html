@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Stocked - Setup</title>
+        <meta name="description"
+            content="A home inventory app where you add everything in your cupboards, fridge, freezer, and pantry. As food gets used, you reduce the quantity. When something is low or gone, it automatically appears on the shopping list.">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/mobile.css">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/auth.css">
+        <link rel="stylesheet" href="css/notifications.css">
+        <meta property="og:title" content="Stocked">
+        <meta property="og:description"
+            content="A home inventory app where you add everything in your cupboards, fridge, freezer, and pantry. As food gets used, you reduce the quantity. When something is low or gone, it automatically appears on the shopping list.">
+        <meta property="og:url" content="https://yourwebsite.com">
+        <link rel="icon" href="assets/logo.svg" type="image/x-icon">
+        <link rel="preconnect" href="https://rsms.me/">
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <script src="https://kit.fontawesome.com/a9d16b892f.js" crossorigin="anonymous"></script>
+        <link rel="manifest" href="manifest.json">
+        <meta name="theme-color" content="#3cb371">
+        <link rel="apple-touch-icon" href="icons/icon-192.png">
+    </head>
+
+    <body>
+        <div class="login-container">
+            <div class="logo-icon"><i class="fa-solid fa-house" style="color: rgb(222, 160, 111);"></i></div>
+
+            <h1>Setup Household</h1>
+
+            <p>Create a new household or join an existing one.</p>
+
+            <button id="create-household" class="primary-button"><i class="fa-solid fa-house"></i>Create Household</button>
+
+            <button id="join-household" class="secondary-button"><i class="fa-solid fa-user-group"></i>Join Household</button>
+        </div>
+
+        <footer>
+            <div class="footer-bottom">
+                <div class="pc-credit" aria-label="Website by PixelCork">
+                    <a href="https://pixelcork.eu/" class="pc-credit-link" title="PixelCork - Web design Cork"
+                        target="_blank" rel="noopener noreferrer">Website by Pixelcork</a>
+                    <span class="pc-credit-sep" aria-hidden="true">•</span>
+                    <a href="https://pixelcork.eu/portfolio.html" class="pc-credit-link" target="_blank"
+                        rel="noopener noreferrer">Portfolio</a>
+                </div>
+
+                <style>
+                    .pc-credit {
+                        --pc-accent: #44BB88;
+                        display: inline-flex;
+                        gap: .5rem;
+                        align-items: center;
+                        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+                        font-size: 0.9rem;
+                        color: #9fb0c2
+                    }
+
+                    .pc-credit .pc-credit-link {
+                        color: inherit;
+                        text-decoration: none;
+                        padding: 6px 8px;
+                        border-radius: 6px;
+                        font-weight: 600;
+                        transition: background .18s, transform .12s
+                    }
+
+                    .pc-credit .pc-credit-link:hover {
+                        background: rgba(68, 187, 136, 0.08);
+                        color: var(--pc-accent);
+                        transform: translateY(-1px)
+                    }
+
+                    .pc-credit .pc-credit-sep {
+                        color: #4b6070;
+                        font-weight: 700
+                    }
+
+                    @media (prefers-reduced-motion:reduce) {
+                        .pc-credit .pc-credit-link {
+                            transition: none
+                        }
+                    }
+                </style>
+                <p>&copy; 2026 PixelCork. All rights reserved. Handcrafted in Cork, Ireland.</p>
+            </div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="js/database.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/setup.js"></script>
+        <script src="js/pwa.js"></script>
+    </body>
+</html>

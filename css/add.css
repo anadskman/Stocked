@@ -1,0 +1,242 @@
+.add-page {
+    padding: 20px;
+}
+
+.add-page h1 {
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+#add-item-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.scan-button {
+    width: 100%;
+    padding: 15px;
+    background: var(--accent);
+    color: white;
+    border-radius: var(--radius);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#scanner {
+    margin-top: 15px;
+    display: none;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    background: white;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.select-row {
+    display: flex;
+    gap: 10px;
+}
+
+.select-row select {
+    flex: 1;
+}
+
+.add-category-button {
+    width: 50px;
+    height: 50px;
+    background: var(--accent);
+    color: white;
+    border-radius: var(--radius);
+    font-size: 18px;
+}
+
+.help-text {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.hidden {
+    display: none;
+}
+
+.primary-button {
+    margin-top: 10px;
+}
+
+.delete-button {
+    margin-top: 20px;
+    width: 100%;
+    background: var(--danger);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.form-page {
+    padding: 20px;
+}
+
+#edit-item-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+input[type="date"] {
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    background: var(--cards-bg);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: 14px;
+
+    font-size:16px;
+
+    color:var(--text-main);
+
+    cursor:pointer;
+
+}
+
+
+input[type="date"]:focus {
+
+    outline:none;
+
+    border-color:var(--accent);
+
+    box-shadow:0 0 0 3px rgba(60,179,113,.15);
+
+}
+
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+
+    cursor:pointer;
+
+    opacity:.7;
+
+}
+
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+
+    opacity:1;
+
+}
+
+.receipt-results {
+
+    display:none;
+
+    margin-top:20px;
+
+    background:var(--cards-bg);
+
+    padding:20px;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+.receipt-item {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px 0;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+
+
+.receipt-results button {
+
+    margin-top:15px;
+
+}
+
+.secondary-button {
+
+    width:100%;
+
+    padding:15px;
+
+    margin-top:15px;
+
+    border-radius:var(--radius);
+
+    background:var(--cards-bg);
+
+    color:var(--accent);
+
+    border:2px solid var(--accent);
+
+    font-size:16px;
+
+    font-weight:600;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+
+}
+
+
+.secondary-button:hover {
+
+    background:rgba(60,179,113,.1);
+
+}
+
+
+.secondary-button i {
+
+    font-size:20px;
+
+}

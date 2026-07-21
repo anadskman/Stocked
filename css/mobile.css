@@ -1,0 +1,23 @@
+@import "variables.css";
+/************************
+    DESKTOP
+************************/
+
+@media(min-width:768px){
+    .dashboard-container{
+        grid-template-columns: repeat(4,1fr);
+    }
+
+    .dashboard,
+    .recent-activity,
+    .inventory-page {
+        max-width: 900px;
+        margin: auto;
+    }
+}
+
+@media(max-width:400px){
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}

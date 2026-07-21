@@ -1,0 +1,198 @@
+Stocked
+
+Background: #F8F9FB
+Cards: #FFFFFF
+Accent: #3CB371 (green)
+Warning: #F5A623
+Danger: #E74C3C
+Text: #1E1E1E
+Rounded corners: 16px
+Soft shadows
+Large touch targets (minimum 44px)
+Bottom navigation with icons
+
+Stocked/
+|
+| -- index.html
+| -- inventory.html
+| -- shopping.html
+| -- add.html
+| -- settings.html
+|
+| -- css/
+│   -- style.css
+│   -- variables.css
+│   -- mobile.css
+|
+| -- js/
+│   -- app.js
+│   -- inventory.js
+│   -- shopping.js
+│   -- database.js
+│
+| -- assets/
+│   -- icons/
+│   -- images/
+│   -- logo.svg
+│
+---- manifest.json
+
+MVP
+
+Version 1 focused:
+
+Login
+Dashboard
+Inventory
+Shopping List
+Add/Edit Item
+Settings
+
+Mobile Wireframe
+Dashboard
+┌─────────────────────────┐
+│ ☰      Stocked      🔔  │
+├─────────────────────────┤
+│ Welcome Back            │
+│                         │
+│ ┌─────────┐ ┌─────────┐ │
+│ │  142    │ │   8     │ │
+│ │ Items   │ │ Low     │ │
+│ └─────────┘ └─────────┘ │
+│                         │
+│ ┌─────────┐ ┌─────────┐ │
+│ │   4     │ │   12    │ │
+│ │ Expiry  │ │ Shopping│ │
+│ └─────────┘ └─────────┘ │
+│                         │
+│ Recent Activity         │
+│ • Used Milk             │
+│ • Added Apples          │
+│ • Bought Bread          │
+│                         │
+│─────────────────────────│
+│ Home Inventory Shopping │
+└─────────────────────────┘
+Inventory
+┌─────────────────────────┐
+│ ← Inventory             │
+├─────────────────────────┤
+│ 🔍 Search...            │
+│                         │
+│ Pantry  Fridge Freezer  │
+│                         │
+│ 🥛 Milk            [+][-]│
+│ Qty: 2                 │
+│                         │
+│ 🍞 Bread          [+][-]│
+│ Qty: 1                 │
+│                         │
+│ 🧈 Butter         [+][-]│
+│ Qty: 3                 │
+│                         │
+│          ＋ Add Item    │
+└─────────────────────────┘
+Shopping List
+┌─────────────────────────┐
+│ ← Shopping List         │
+├─────────────────────────┤
+│ □ Milk                  │
+│ □ Eggs                  │
+│ □ Bread                 │
+│                         │
+│ + Add Item              │
+│                         │
+│ Bought Today            │
+│ ☑ Apples                │
+└─────────────────────────┘
+Add Item
+┌─────────────────────────┐
+│ ← Add Item              │
+├─────────────────────────┤
+│ Name                    │
+│ [______________]         │
+│                         │
+│ Category                │
+│ [Pantry ▼]              │
+│                         │
+│ Quantity                │
+│ [-]  2  [+]             │
+│                         │
+│ Unit                    │
+│ [Bottles ▼]             │
+│                         │
+│ Minimum Stock           │
+│ [ 1 ]                   │
+│                         │
+│ Expiry (Optional)       │
+│ [ Select Date ]         │
+│                         │
+│      Save Item          │
+└─────────────────────────┘
+
+AUTOMATIC SHOPPING LIST!!!!!!!
+This will prob be the most useful part of the whole project.
+Itll fetch from inventory and read if an item is below you set minimum it adds it to the shopping list, and when youre shopping you go to inventory and add it and the shopping list updates.
+
+I started by creating a foreign key for my shopping_list table.
+Then i did basically the same thing for the rest of the html pages, copy everything except `<main></main>`
+and my main is just gonna be loaded from the database.
+
+I made the shopping list work from the database at first to test if it works and looks nice, and it does.
+then I wrote all the javascript and of course forgot to add polices but once they were all done everything worked.
+
+Then I added the barcode feature, i start by just adding a button into the add form and updated my js to make the actual button work, i used `world.openfoodfacts.org`  for the barcode database.
+
+I was trying to figure out why the button wouldnt work on my phone but its because its on localhost, so ill have to test later.
+
+Until then, I updated my tables so i added `barcode` to my items table.
+
+I added expiry tracking also into the inventory page.
+
+The Next thing i did was make the dashboard actually display live info.
+
+
+checklist:
+- animations
+
+MAKE HOUSEHOLD SIGN INS< ONE FOR FMAILY ONE FOR STARDANCE/OPENSOURCE!!!!!!!!!!!!
+
+TODOs
+- PWA
+- rest of pages
+
+I started with an activity tracker on the dashboard.
+I made an activity table in my database.
+This time i made the policies now so i dont forget later.
+Then I made `activity.js` and `notifications.js`
+I then added my ids to my notifcation button in the header and then i added the notification screen, but i made it similar to the side menu where it just pops out.
+Then I made `notifications.css` and tested it and it didnt work but it was because i forgot to add `id="notification-list"`
+
+**Edit/Delete**
+I wanted to be able to edit and remove items so i added this feature
+started by making a new file edit-item.html and again i copied and paste the header/footer.
+Its basically the same as the add form just it edits them instead.
+So now tapping anywhere on the cards for the items(execpt +/-) opens the edit page
+
+Once that was working i added barcode history.
+I started by creating a new barcode_history table and just updating a few lines in addItem.js however i cant test this until its live.
+
+Next thing im adding is the ablity to scan receipts and  it auto uploads them.
+I did this using Camera OCR/Tesseract.
+It wasnt too bad i just added a scan button to my add form align with a quick google search and i had a "working" reciept scanner.
+It works.. but its not perfect some things come out messy.
+
+Household, id say this is what makes this go from personal to everyone can use it.
+since i want to use this myself without other people messing with it all, ill setup a version for hackclub.
+
+I started by renaming index.html to dashboard.html and making a new index.html when is the login page.
+I just copied my scripts and head and then made 3 buttons, login, create account, and try demo. setup.html was basically the same, just 2 buttons create household, join household.
+
+Next thing i did was settings page.
+I made it so you can just copy your household code.
+
+Afterwards i made the whole recipes section,
+
+Then the analytics section,
+
+then i made the pwa
