@@ -4,11 +4,24 @@ const recipeId = params.get("id");
 loadRecipe();
 
 async function loadRecipe() {
-  const { data: recipe } = await supabaseClient
-    .from("recipes")
-    .select("*")
-    .eq("id", recipeId)
-    .single();
+
+    if(!recipeId){
+        console.error("No recipe ID");
+        return;
+    }
+
+
+    const { data: recipe, error } = await supabaseClient
+        .from("recipes")
+        .select("*")
+        .eq("id", recipeId)
+        .single();
+
+
+    if(error){
+        console.error("Recipe load error:", error);
+        return;
+    }
 
   document.getElementById("recipe-header").innerHTML = `
         <div class="recipe-header">
