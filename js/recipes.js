@@ -19,6 +19,7 @@ async function loadRecipes(){
         .from("recipes")
 
         .select("*")
+        .eq("household_id", householdId)
 
         .order("created_at", {
             ascending:false
