@@ -93,6 +93,38 @@
             </div>
         </footer>
 
+        <script>
+            async function checkAlreadyLoggedIn(){
+
+    if(localStorage.getItem("mode") === "demo"){
+        window.location.href = "dashboard.html";
+        return;
+    }
+
+
+    const user = await getCurrentUser();
+
+
+    if(user){
+
+        const householdId = await getHouseholdId();
+
+
+        if(householdId){
+            window.location.href = "dashboard.html";
+        }
+        else{
+            window.location.href = "setup.html";
+        }
+
+    }
+
+}
+
+
+checkAlreadyLoggedIn();
+        </script>
+
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
         <script src="js/database.js"></script>
         <script src="js/app.js"></script>
