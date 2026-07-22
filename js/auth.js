@@ -45,6 +45,7 @@ if (loginButton) {
     }
 
     localStorage.removeItem("mode");
+    localStorage.removeItem("demo_household_id");
 
     checkSetup();
   };
