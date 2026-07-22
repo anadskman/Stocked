@@ -5,8 +5,22 @@ const loginButton = document.getElementById("login-button");
 const signupButton = document.getElementById("signup-button");
 
 if (demoButton) {
-  demoButton.onclick = () => {
+  demoButton.onclick = async () => {
+
+    const { data, error } = await supabaseClient
+      .from("households")
+      .select("id")
+      .eq("invite_code", "DEMO")
+      .single();
+
+    if (error) {
+      console.error(error);
+      alert("Demo household not found.");
+      return;
+    }
+
     localStorage.setItem("mode", "demo");
+    localStorage.setItem("demo_household_id", data.id);
 
     window.location.href = "dashboard.html";
   };
