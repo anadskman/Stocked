@@ -7,37 +7,39 @@ document
   .addEventListener("click", addIngredientRow);
 
 async function addIngredientRow() {
-  const { data, error } = await supabaseClient
-    .from("items")
-    .select("*")
-    .order("name");
+
+    const householdId = await getHouseholdId();
+
+    const { data, error } = await supabaseClient
+        .from("items")
+        .select("*")
+        .eq("household_id", householdId)
+        .order("name");
 
 
-if(error){
+    if(error){
+        console.error(error);
+        return;
+    }
 
-    console.error(error);
-    return;
 
-}
+    const row = document.createElement("div");
 
-  const row = document.createElement("div");
-  row.className = "ingredient-row";
+    row.className = "ingredient-row";
 
-  row.innerHTML = `
+
+    row.innerHTML = `
 
         <select class="ingredient-item">
 
-            ${data
-              .map(
-                (item) => `
+            ${data.map(item => `
                 <option value="${item.id}">
                     ${item.name}
                 </option>
-            `,
-              )
-              .join("")}
+            `).join("")}
 
         </select>
+
 
         <input
             class="ingredient-quantity"
@@ -47,7 +49,11 @@ if(error){
 
     `;
 
-  document.getElementById("ingredients").appendChild(row);
+
+    document
+        .getElementById("ingredients")
+        .appendChild(row);
+
 }
 
 document.getElementById("recipe-form").addEventListener("submit", async (e) => {
