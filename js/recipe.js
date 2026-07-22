@@ -190,28 +190,26 @@ async function loadRecipe() {
 
 
 
-async function addMissingItems(missing){
-
+async function addMissingItems(missing) {
 
     const householdId = await getHouseholdId();
 
 
+    for (const ingredient of missing) {
 
-    for(const ingredient of missing){
 
-
-        const {data: existing} = await supabaseClient
-
+        const { data: existing, error } = await supabaseClient
             .from("shopping_list")
-
             .select("*")
-
             .eq("item_id", ingredient.item_id)
-
             .eq("household_id", householdId)
-
             .maybeSingle();
 
+
+        if(error){
+            console.error(error);
+            continue;
+        }
 
 
         if(existing)
@@ -219,7 +217,7 @@ async function addMissingItems(missing){
 
 
 
-        await supabaseClient
+        const { error: insertError } = await supabaseClient
 
             .from("shopping_list")
 
@@ -235,8 +233,15 @@ async function addMissingItems(missing){
 
             });
 
-    }
 
+
+        if(insertError){
+
+            console.error("Shopping insert failed:", insertError);
+
+        }
+
+    }
 
 
     alert("Missing ingredients added.");
