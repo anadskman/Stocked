@@ -16,31 +16,27 @@ async function getCurrentUser() {
 }
 
 async function getHouseholdId() {
-  // Demo mode
 
-  if (localStorage.getItem("mode") === "demo") {
-    return "00000000-0000-0000-0000-000000000000";
-  }
+    if (localStorage.getItem("mode") === "demo") {
+        return localStorage.getItem("demo_household_id");
+    }
 
-  const user = await getCurrentUser();
+    const user = await getCurrentUser();
 
-  if (!user) return null;
+    if (!user){
+        return null;
+    }
 
-  const { data, error } = await supabaseClient
+    const { data, error } = await supabaseClient
+        .from("profiles")
+        .select("household_id")
+        .eq("id", user.id)
+        .single();
 
-    .from("profiles")
+    if(error){
+        console.error(error);
+        return null;
+    }
 
-    .select("household_id")
-
-    .eq("id", user.id)
-
-    .single();
-
-  if (error) {
-    console.error(error);
-
-    return null;
-  }
-
-  return data.household_id;
+    return data.household_id;
 }
